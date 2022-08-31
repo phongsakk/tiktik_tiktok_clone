@@ -5,6 +5,7 @@ const nextConfig = {
   images: {
     domains: [
       'scontent.fbkk12-4.fna.fbcdn.net',
+      'lh3.googleusercontent.com',
     ]
   }
 }
