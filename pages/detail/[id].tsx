@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { FormEvent } from 'react'
 import { BsFillPlayFill } from 'react-icons/bs'
 import { GoVerified } from 'react-icons/go'
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi'
@@ -21,6 +21,8 @@ const Detail: NextPage<IProps> = ({ postDetails }) => {
   const videoRef = React.useRef<HTMLVideoElement>(null)
   const router = useRouter()
   const { userProfile } = useAuthStore()
+  const [comment, setComment] = React.useState('')
+  const [isPostingComment, setIsPostingComment] = React.useState(false)
 
   React.useEffect(() => {
     if (post && videoRef.current) {
@@ -35,8 +37,24 @@ const Detail: NextPage<IProps> = ({ postDetails }) => {
         postId: post._id,
         like
       })
-
       setPost(prev => ({ ...prev, likes: data.likes }))
+    }
+  }
+
+  const addComment = async (e: FormEvent) => {
+    e.preventDefault()
+
+    if (userProfile && comment) {
+      setIsPostingComment(true)
+
+      const { data } = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
+        userId: userProfile._id,
+        comment,
+      })
+
+      setPost(prev => ({ ...prev, comments: data.comments }))
+      setComment('')
+      setIsPostingComment(false)
     }
   }
 
@@ -139,7 +157,11 @@ const Detail: NextPage<IProps> = ({ postDetails }) => {
           </div>
 
           <Comments
-
+            comment={comment}
+            comments={post.comments}
+            setComment={setComment}
+            addComment={addComment}
+            isPostingComment={isPostingComment}
           />
         </div>
       </div>
