@@ -18,6 +18,12 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
   const [isVideoMuted, setIsVideoMuted] = React.useState(false)
   const videoRef = React.useRef<HTMLVideoElement>(null)
 
+  React.useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isVideoMuted
+    }
+  }, [isVideoMuted])
+
   const onVideoPress = () => {
     if (playing) {
       videoRef.current?.pause()
