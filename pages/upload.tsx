@@ -38,7 +38,6 @@ const Upload = () => {
         .then((data) => {
           setVideoAsset(data)
           setIsLoading(false)
-          console.log(data)
         })
     } else {
       setIsLoading(false)
