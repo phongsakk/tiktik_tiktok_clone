@@ -37,8 +37,8 @@ const Navbar = () => {
               </button>
             </Link>
             {userProfile.image && (
-              <Link href='/' >
-                <>
+              <Link href={`/profile/${userProfile._id}`} >
+                <div>
                   <Image
                     width={40}
                     height={40}
@@ -46,7 +46,7 @@ const Navbar = () => {
                     src={userProfile.image}
                     alt={userProfile.userName}
                   />
-                </>
+                </div>
               </Link>
             )}
             <button
