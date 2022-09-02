@@ -14,7 +14,7 @@ const Home: NextPage<IProps> = ({ videos }) => {
       {videos.length? videos.map((video)=>(
         <VideoCard post={video} key={video._id} />
       )): (
-        <NoResults text={'No Videos'} />
+        <NoResults type='video' />
       )}
     </div>
   )
