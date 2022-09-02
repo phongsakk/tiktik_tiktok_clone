@@ -4,12 +4,12 @@ import { FaCloudUploadAlt } from 'react-icons/fa'
 import { MdDelete } from 'react-icons/md'
 import axios from 'axios'
 import { SanityAssetDocument } from '@sanity/client'
+import { BASE_URL } from '../utils'
 
 import useAuthStore from '../store/authStore'
 import { client } from '../utils/client'
 import { topics } from '../utils/constants';
 import { PostPayload } from '../types'
-import { BASE_URL } from '../utils'
 
 const Upload = () => {
   const [isLoading, setIsLoading] = React.useState(false)
