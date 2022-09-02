@@ -2,6 +2,8 @@ import axios from "axios"
 import jwtDecode from "jwt-decode"
 import { GoogleCredential, IUser } from "../types"
 
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+
 export const createOrGetUser = async (response: any, addUser: (user: IUser) => any) => {
   const decoded: GoogleCredential = jwtDecode(response.credential)
 
@@ -16,5 +18,5 @@ export const createOrGetUser = async (response: any, addUser: (user: IUser) => a
 
   addUser(user)
 
-  await axios.post(`http://localhost:3000/api/auth`, user)
+  await axios.post(`${BASE_URL}/api/auth`, user)
 }
