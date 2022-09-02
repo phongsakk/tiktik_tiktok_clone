@@ -1,9 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { PostPayload } from '../../../types'
 import { client } from '../../../utils/client'
-import { allPostsQuery, postDetailQuery } from '../../../utils/queries'
-
+import { postDetailQuery } from '../../../utils/queries'
 
 export default async function handler(
   req: NextApiRequest,
