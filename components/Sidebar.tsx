@@ -1,8 +1,5 @@
 import React from 'react'
-import { NextPage } from 'next'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { GoogleLogin } from '@react-oauth/google'
 import { AiFillHome, AiOutlineMenu } from 'react-icons/ai'
 import { ImCancelCircle } from 'react-icons/im'
 
@@ -11,11 +8,7 @@ import { Discover, Footer, SuggestedAccounts } from '.'
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = React.useState(true)
 
-  const userProfile = false
-
   const normalLink = 'flex item-center gap-3 hover:bg-primary p-3 justify-content xl:justify-start cursor-pointer font-semibold text-[#F51997] rounded'
-
-  const activeLink = ''
 
   return (
     <div>
@@ -41,20 +34,6 @@ const Sidebar = () => {
               </div>
             </Link>
           </div>
-          {!userProfile && (
-            <div className='px-2 py-4 hidden xl:block'>
-              <p className='text-gray-400'>
-                Login to like and comment videos
-              </p>
-              <div className="pr-4">
-                {/* ---------------------------------------------------------------- */}
-                <button className='cursor-pointer bg-white text-lg text-[#F51997] border-[1px] border-[#F51997] font-semibold px-6 py-3 rounded-md outline-none w-full mt-3 hover:bg-[#F51997] hover:text-white'>
-                  Log in
-                </button>
-              </div>
-
-            </div>
-          )}
           <Discover />
           <SuggestedAccounts />
           <Footer />

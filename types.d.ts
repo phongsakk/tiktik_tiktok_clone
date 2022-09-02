@@ -41,3 +41,21 @@ export interface GoogleCredential {
   picture: string
   sub: string
 }
+
+export interface PostPayload {
+  _type: 'post' | 'comment',
+  caption: string
+  category: string
+  video: {
+    _type: 'file' | '',
+    asset: {
+      _type: 'reference' | '',
+      _ref: string
+    }
+  },
+  userId: string,
+  postedBy: {
+    _type: 'postedBy' | '',
+    _ref: string
+  },
+  topic: string}
