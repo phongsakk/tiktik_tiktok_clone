@@ -11,7 +11,7 @@ const items = [
   {
     type: 'video',
     icon: <MdOutlineVideocamOff />,
-    label: ''
+    label: 'No video here.'
   },
   {
     type: 'comment',
