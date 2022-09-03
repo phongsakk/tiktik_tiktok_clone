@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import type { NextPage } from 'next'
 import { NoResults, VideoCard } from '../components'
 import { Video } from '../types'
@@ -11,17 +11,26 @@ interface IProps {
 const Home: NextPage<IProps> = ({ videos }) => {
   return (
     <div className='flex flex-col gap-10 videos h-full'>
-      {videos.length? videos.map((video)=>(
+      {videos.length ? videos.map((video) => (
         <VideoCard post={video} key={video._id} />
-      )): (
+      )) : (
         <NoResults type='video' />
       )}
     </div>
   )
 }
 
-export const getServerSideProps = async () => {
-  const response = await axios.get(`${BASE_URL}/api/post`)
+export const getServerSideProps = async ({
+  query: { topic }
+}: {
+  query: { topic: string }
+}) => {
+  let response: AxiosResponse
+  if (topic) {
+    response = await axios.get(`${BASE_URL}/api/discover/${topic}`)
+  } else {
+    response = await axios.get(`${BASE_URL}/api/post`)
+  }
 
   return {
     props: { videos: response.data }
