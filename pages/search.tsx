@@ -37,7 +37,7 @@ const Search = ({ videos }: IProps) => {
           {searchAccounts.length ? (
             searchAccounts.map((user, idx) => (
               <Link href={`/profile/${user._id}`} key={idx}>
-                <div className='flex gap-3 cursor-pointer p-2 font-semibold rounded border-b-2 border-gray-200 w-100'>
+                <div className='flex gap-3 cursor-pointer p-2 font-semibold rounded border-b-2 border-gray-200 w-100 bg:white hover:bg-[#F51997] hover:bg-opacity-20'>
                   <div>
                     <Image
                       src={user.image}
@@ -48,7 +48,7 @@ const Search = ({ videos }: IProps) => {
                     />
                   </div>
 
-                  <div>
+                  <div className='flex flex-col gap-2 justify-center'>
                     <p className='flex gap-1 items-center text-md font-bold text-gray-700 lowercase'>
                       {user.userName.replaceAll(' ', '')}
                       <GoVerified className='text-blue-400' />
