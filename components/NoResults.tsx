@@ -4,7 +4,8 @@ import { BiCommentX } from 'react-icons/bi'
 import { MdOutlineVideocamOff } from 'react-icons/md'
 
 interface IProps {
-  type: 'video' | 'comment'
+  type: 'video' | 'comment' | 'user'
+  text?: string
 }
 
 const items = [
@@ -17,10 +18,15 @@ const items = [
     type: 'comment',
     icon: <BiCommentX />,
     label: 'No comments yet! Be the first one to add a comment.'
+  },
+  {
+    type: 'user',
+    icon: <BiCommentX />,
+    label: 'No users.'
   }
 ]
 
-const NoResults: NextPage<IProps> = ({ type }) => {
+const NoResults: NextPage<IProps> = ({ type, text }) => {
   return (
     <div className='flex flex-col justify-center items-center h-full w-full'>
       {items.filter(item => item.type === type).map(item => (
@@ -29,7 +35,7 @@ const NoResults: NextPage<IProps> = ({ type }) => {
             {item.icon}
           </p>
           <p className='text-2xl text-center'>
-            {item.label}
+            {text || item.label}
           </p>
         </React.Fragment>
       ))}
