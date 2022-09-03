@@ -59,19 +59,9 @@ const Profile = ({
 
       <div>
         <div className='flex gap-10 my-10 border-b-2 border-gray-200 bg-white w-full'>
-          <p
-            onClick={() => setShowUserVideos(true)}
-            className={`text-xl font-semibold cursor-pointer mt-2 ${videos}`}
-          >
-            Videos
-          </p>
+          <p onClick={() => setShowUserVideos(true)} className={`text-xl font-semibold cursor-pointer mt-2 ${videos}`}>Videos</p>
 
-          <p
-            onClick={() => setShowUserVideos(false)}
-            className={`text-xl font-semibold cursor-pointer mt-2 ${liked}`}
-          >
-            Liked
-          </p>
+          <p onClick={() => setShowUserVideos(false)} className={`text-xl font-semibold cursor-pointer mt-2 ${liked}`}>Liked</p>
         </div>
 
         <div className='flex gap-6 flex-wrap md:justify-start'>
