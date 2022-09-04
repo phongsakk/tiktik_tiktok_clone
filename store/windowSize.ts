@@ -13,7 +13,7 @@ const useWindowSize = () => {
     breakpoint: 'xs',
   })
 
-  const resolutionChane = () => {
+  const resolutionChange = () => {
     const { innerHeight: height, innerWidth: width } = window
 
     setSize({
@@ -24,11 +24,13 @@ const useWindowSize = () => {
   }
 
   useEffect(() => {
-    window.addEventListener('resize', resolutionChane)
-    window.addEventListener('DOMContentLoaded', resolutionChane)
+    window.addEventListener('resize', resolutionChange)
+    window.addEventListener('DOMContentLoaded', resolutionChange)
+    window.onload = () => resolutionChange()
     return () => {
-      window.removeEventListener('resize', resolutionChane)
-      window.removeEventListener('DOMContentLoaded', resolutionChane)
+      window.removeEventListener('resize', resolutionChange)
+      window.removeEventListener('DOMContentLoaded', resolutionChange)
+      window.onload = () => {}
     }
   }, [])
 
