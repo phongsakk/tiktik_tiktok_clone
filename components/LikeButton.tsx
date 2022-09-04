@@ -8,7 +8,7 @@ const LikeButton = ({ likes, handleLike, handleDislike }: IProps) => {
   const { userProfile } = useAuthStore()
 
   React.useEffect(() => {
-    const liked = likes.some(item => item._ref === userProfile?._id)
+    const liked = likes?.some(item => item._ref === userProfile?._id)
     setAlreadyLiked(liked)
   }, [likes, userProfile?._id])
 
